@@ -5,13 +5,28 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import { apiClient } from "@/lib/api-client"
-import { SIGNUP_ROUTE } from "@/utils/constants"
+import { LOGIN_ROUTE, SIGNUP_ROUTE } from "@/utils/constants"
+import { useNavigate } from "react-router-dom"
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const validateSignup=()=>{
+  const navigate=useNavigate();
+
+  const validateLogin=()=>{
+    if(!email.length){
+      toast.error("Email is required")
+      return false;
+    }
+    if(!password.length){
+      toast.error("Password is required")
+      return false;
+    }
+    return true;
+  }
+  const
+   validateSignup=()=>{
     if(!email.length){
       toast.error("Email is required")
       return false;
@@ -26,17 +41,38 @@ const Auth = () => {
     }
     return true;
   }
-    const handleLogin=async()=>{}
-    const handleSignup=async()=>{
-      if(validateSignup()){
+
+    const handleLogin=async()=>{
+      if(validateLogin()){
         try {
-          const response=await apiClient.post(SIGNUP_ROUTE,{email,password})
-         console.log(response)
+          const response=await apiClient.post(LOGIN_ROUTE,{email,password},{withCredentials:true})
+
+          if(response.data.user.id){
+            if(response.data.user.profileSetup){
+              navigate('/chat')
+            }else{
+              navigate('/profile');
+            }
+          }
         } catch (error) {
           console.log(error.message)
         }
       }
     }
+
+    const handleSignup=async()=>{
+      if(validateSignup()){
+        try {
+          const response=await apiClient.post(SIGNUP_ROUTE,{email,password},{withCredentials:true})
+          if(response.status===201){
+            navigate('/profile');
+          }
+        } catch (error) {
+          console.log(error.message)
+        }
+      }
+    }
+
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[url('https://media.istockphoto.com/id/1403848173/vector/vector-online-chatting-pattern-online-chatting-seamless-background.jpg?s=612x612&w=0&k=20&c=W3O15mtJiNlJuIgU6S9ZlnzM_yCE27eqwTCfXGYwCSo=')] bg-fit bg-center">
       <div className="h-[90vh] bg-gray-50 border-2 border-black text-opacity-90 shadow-2xl w-[80vw]
@@ -49,7 +85,8 @@ const Auth = () => {
             </div>
           </div>
           <div className="flex items-center justify-center w-full">
-          <Tabs className="w-3/4">
+
+          <Tabs className="w-3/4" defaultValue="login">
             <TabsList className="bg-transparent rounded-none w-full flex">
               <TabsTrigger value="login"
               className="data-[state=active]:bg-transparent text-black text-opacity-90 border-b-2 rounded-none data-[state=active]:text-black w-full data-[state=active]:font-semibold data-[state=active]:border-b-purple-500 p-3 transition-all">Login</TabsTrigger>
