@@ -3,14 +3,40 @@ import Victory from "../../assets/victory.svg"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
+import { apiClient } from "@/lib/api-client"
+import { SIGNUP_ROUTE } from "@/utils/constants"
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-    const handleLogin=()=>{}
-    const handleSignup=()=>{}
+  const validateSignup=()=>{
+    if(!email.length){
+      toast.error("Email is required")
+      return false;
+    }
+    if(!password.length){
+      toast.error("Password is required")
+      return false;
+    }
+    if(password!=confirmPassword){
+      toast.error("Password & confirm password should be same")
+      return false;
+    }
+    return true;
+  }
+    const handleLogin=async()=>{}
+    const handleSignup=async()=>{
+      if(validateSignup()){
+        try {
+          const response=await apiClient.post(SIGNUP_ROUTE,{email,password})
+         console.log(response)
+        } catch (error) {
+          console.log(error.message)
+        }
+      }
+    }
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-[url('https://media.istockphoto.com/id/1403848173/vector/vector-online-chatting-pattern-online-chatting-seamless-background.jpg?s=612x612&w=0&k=20&c=W3O15mtJiNlJuIgU6S9ZlnzM_yCE27eqwTCfXGYwCSo=')] bg-fit bg-center">
       <div className="h-[90vh] bg-gray-50 border-2 border-black text-opacity-90 shadow-2xl w-[80vw]
