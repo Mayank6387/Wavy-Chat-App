@@ -7,13 +7,14 @@ import { toast } from "sonner"
 import { apiClient } from "@/lib/api-client"
 import { LOGIN_ROUTE, SIGNUP_ROUTE } from "@/utils/constants"
 import { useNavigate } from "react-router-dom"
+import { useAppStore } from "@/store"
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate=useNavigate();
-
+  const {setUserInfo}=useAppStore();
   const validateLogin=()=>{
     if(!email.length){
       toast.error("Email is required")
@@ -49,6 +50,7 @@ const Auth = () => {
 
           if(response.data.user.id){
             if(response.data.user.profileSetup){
+              setUserInfo(response.data.user)
               navigate('/chat')
             }else{
               navigate('/profile');
@@ -65,6 +67,7 @@ const Auth = () => {
         try {
           const response=await apiClient.post(SIGNUP_ROUTE,{email,password},{withCredentials:true})
           if(response.status===201){
+            setUserInfo(response.data.user)
             navigate('/profile');
           }
         } catch (error) {
