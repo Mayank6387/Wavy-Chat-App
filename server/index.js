@@ -18,6 +18,9 @@ app.use(cors({
   optionsSuccessStatus: 200,
   credentials: true, //enable cookies
 }));
+
+app.use("/uploads/profiles",express.static("uploads/profiles"))                   //For image uploading(multer)
+
 app.use(cookieParser()); //to read cookie frrom frontend
 
 app.use(express.json());

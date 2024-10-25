@@ -52,7 +52,7 @@ function App() {
     }else{
       setLoading(false);
     }
-  }, [userInfo])
+  }, [userInfo,setUserInfo])
 
   if(loading){
     return <div>Loading...</div>
