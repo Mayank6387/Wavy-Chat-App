@@ -181,3 +181,14 @@ try {
   return res.status(500).send("Internal Server Error");
 }
 }
+
+export const logOut=async(req,res,next)=>{
+  try { 
+    res.cookie("jwttoken","",{maxAge:1,secure:true,sameSite:"None"})
+    return res.status(200).send("LogOut successfull");
+  
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
+  }
