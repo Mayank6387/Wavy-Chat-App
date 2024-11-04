@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import authRouter from "./routes/AuthRoute.js";
+import contactsRouter from "./routes/ContactsRoute.js";
 
 dotennv.config();
 
@@ -26,6 +27,7 @@ app.use(cookieParser()); //to read cookie frrom frontend
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/contacts",contactsRouter);
 
 const server = app.listen(port, () => {
   console.log(`Server is running at port :${port}`);

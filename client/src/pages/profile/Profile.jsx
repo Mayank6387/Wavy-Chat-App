@@ -12,6 +12,7 @@ const Profile = () => {
 
   const navigate=useNavigate();
   const {userInfo,setUserInfo}=useAppStore();
+  
   const [firstName,setFirstName]=useState("");
   const [lastName,setLastName]=useState("");
   const [image,setImage]=useState(null);

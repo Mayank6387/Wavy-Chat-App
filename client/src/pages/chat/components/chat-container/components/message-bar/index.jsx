@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import {GrAttachment} from "react-icons/gr"
 import { IoSend } from "react-icons/io5"
 import { RiEmojiStickerLine } from "react-icons/ri"
+
 const MessageBar = () => {
   const emojiRef=useRef()
   const [message,setMessage]=useState("")
