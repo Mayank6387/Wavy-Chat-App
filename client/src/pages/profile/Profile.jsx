@@ -113,7 +113,7 @@ const Profile = () => {
                   <AvatarImage
                     src={image}
                     alt="profile"
-                    className="object-cover w-full h-full bg-black"
+                    className="object-cover w-full h-full bg-black rounded-full"
                   />
                 ):(
                   <div className={`uppercase h-32 w-32 md:w-48 md:h-48 text-5xl border-[1px] flex items-center justify-center rounded-full`}>
