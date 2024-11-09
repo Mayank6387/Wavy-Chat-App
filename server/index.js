@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import authRouter from "./routes/AuthRoute.js";
 import contactsRouter from "./routes/ContactsRoute.js";
 import setupSocket from "./socket.js";
+import messagesRouter from "./routes/MessagesRoutes.js";
 
 dotennv.config();
 
@@ -29,6 +30,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/contacts",contactsRouter);
+app.use("/api/messages",messagesRouter)
 
 const server = app.listen(port, () => {
   console.log(`Server is running at port :${port}`);
