@@ -23,6 +23,7 @@ app.use(cors({
 }));
 
 app.use("/uploads/profiles",express.static("uploads/profiles"))                   //For image uploading(multer)
+app.use("/uploads/files",express.static("uploads/files"))
 
 app.use(cookieParser()); //to read cookie frrom frontend
 

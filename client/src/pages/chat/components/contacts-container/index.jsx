@@ -33,9 +33,9 @@ const ContactsContainer = () => {
      </div>
      </div>
      <div className="my-5">
-     <div className="flex items-center justify-between pr-16">
+     {/* <div className="flex items-center justify-between pr-16">
         <Title text="Channels"/>
-     </div>
+     </div> */}
      </div>
      <ProfileInfo/>
     </div>

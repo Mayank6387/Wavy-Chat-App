@@ -11,8 +11,9 @@ authRouter.post("/signup",signup)
 authRouter.post("/login",login)
 authRouter.get("/user-info",verifyUser,getUserInfo);
 authRouter.post("/update-profile",verifyUser,updateUserInfo)
+
 authRouter.post("/add-profile-image",verifyUser,
-    upload.single("profile-image"),
+    upload.single("profile-image"),   //profile-image =>name of the input field given in frontend
     addProfileImage)
 
 authRouter.delete("/remove-profile-image",verifyUser,removeProfileImage)
