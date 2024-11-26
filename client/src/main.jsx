@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
   <SocketProvider>
    <BrowserRouter>
    <App />
-   <Toaster closeButton/>
+   <Toaster closeButton/>    //for toast messages
   </BrowserRouter>
   </SocketProvider>
 
