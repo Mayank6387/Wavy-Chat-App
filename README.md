@@ -52,8 +52,6 @@ bash
 Copy code
 git clone <repository-url>
 cd Wavy-Chat-App
-
-
 Install dependencies:
 bash
 Copy code
@@ -61,9 +59,14 @@ cd client
 npm install
 cd ../server
 npm install
-
-
-Set up environment variables:
+Install dependencies:
+bash
+Copy code
+cd client
+npm install
+cd ../server
+npm install
+3.Set up environment variables:
 Create a .env file in the server directory with the following:
 makefile
 Copy code
@@ -93,12 +96,12 @@ Folder Structure
 bash
 Copy code
 Wavy-Chat-App/
-├── client/       # Frontend React code
-├── server/       # Backend Node.js and Express code
-├── routes/       # API routes (e.g., AuthRoute.js)
-├── models/       # Mongoose schemas
-├── socket.js     # Real-time socket events
-├── uploads/      # Uploaded files and profiles
+  client/       # Frontend React code
+  server/       # Backend Node.js and Express code
+  routes/       # API routes (e.g., AuthRoute.js)
+  models/       # Mongoose schemas
+  socket.js     # Real-time socket events
+  uploads/      # Uploaded files and profiles
 
 
 Usage
