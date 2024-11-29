@@ -48,22 +48,12 @@ MongoDB
 npm or yarn
 Steps
 Clone the repository:
-bash
-Copy code
 git clone <repository-url>
 cd Wavy-Chat-App
-Install dependencies:
-bash
-Copy code
+Install dependencies for frontend:
 cd client
 npm install
-cd ../server
-npm install
-Install dependencies:
-bash
-Copy code
-cd client
-npm install
+Install dependencies: for backend
 cd ../server
 npm install
 3.Set up environment variables:
@@ -77,15 +67,11 @@ ORIGIN=<frontend-url>
 
 Start the development servers:
 Backend:
-bash
-Copy code
 cd server
 npm start
 
 
 Frontend:
-bash
-Copy code
 cd client
 npm run dev
 
@@ -93,8 +79,6 @@ npm run dev
 Access the application at http://localhost:3000.
 
 Folder Structure
-bash
-Copy code
 Wavy-Chat-App/
   client/       # Frontend React code
   server/       # Backend Node.js and Express code
